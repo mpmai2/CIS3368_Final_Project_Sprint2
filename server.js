@@ -135,13 +135,7 @@ app.get('/', function(req, res) {
 
 });
 
-app.get('/create', function(req, res) {
-
-    res.render('pages/create', {
-    });
-
-});
-
+// Trip Table
 
 app.get('/all_trip', function(req, res) {
     fetch(python_url+"/trip")
@@ -231,6 +225,84 @@ app.post('/add_trip', function (req, res) {
 
 // Destination Table
 
+app.get('/all_destination', function(req, res) {
+    fetch(python_url+"/destination")
+    .then(response =>response.json())
+    .then(results =>{
+        // console.log(results)
+        const destination = results.destination.map(function(result){
+            var destination = {"id":result.id,
+                        "country":result.country,
+                        "city":result.city,
+                        "sightseeing" : result.sightseeing
+            }
+            return destination
+        })
+        const my_result = {
+                        destination : destination}
+        console.log(my_result)
 
+    res.render('pages/create',{
+            my_result : my_result
+        })
+    })
+})
+
+app.post('/edit_destination', function (req, res) {
+    var id = req.body.id
+    var country = req.body.country
+    var city = req.body.city
+    var sightseeing = req.body.sightseeing
+    const data = {id:id,country:country, city:city, sightseeing:sightseeing}
+    console.log(data)
+    fetch(python_url + "/edit_destination", {
+        method: 'PUT',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(data)
+    })
+        .then(response => {
+            //reloads the page
+            res.redirect('back')
+        })
+})
+
+app.post('/delete_destination', function(req, res) {
+    var postData = parseInt(req.body.id)
+    // console.log(postData)
+    const data = {id:postData}
+    console.log(data)
+    fetch(python_url + "/delete_destination", {
+        method: 'DELETE',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(data)
+    })
+        .then(response => {
+            //reloads the page
+            res.redirect('back')
+        })
+})
+
+app.post('/add_destination', function (req, res) {
+    var country = req.body.country
+    var city = req.body.city
+    var sightseeing = req.body.sightseeing
+    const data = {country:country, city:city, sightseeing:sightseeing}
+    console.log(data)
+    fetch(python_url + "/add_destination", {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(data)
+    })
+        .then(response => {
+            //reloads the page
+            res.redirect('back')
+        })
+})
 app.listen(8080);
 console.log('8080 is the magic port');
