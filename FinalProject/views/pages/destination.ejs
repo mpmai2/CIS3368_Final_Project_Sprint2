@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <%- include('../partials/head'); %>
+        <title> My Travel Planner </title>
+    </head>
+</html>
+<body>
+    <header>
+        <%- include('../partials/header'); %>
+    </header>
+    <h2 class='mb-3'>Destination Table</h2>
+    <div class="btn-group" style="float: right"></div>
+
+
+<table id="dtBasicExample" class="table" width="100%">
+  <button onclick="location.href = '/addTrip'"; type="button" class="btn btn-primary" style="float:right">Add</button>
+  <thead>
+    <tr>
+      <th class="th-sm">Name
+      </th>
+      <th class="th-sm">ID
+      </th>
+      <th class="th-sm">Country
+      </th>
+      <th class="th-sm">City
+      </th>
+      <th class="th-sm">Sight Seeing
+      </th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Cali!</td>
+      <td>1</td>
+      <td>USA</td>
+      <td>LA</td>
+      <td>Hollywood Sign</td>
+      <td width="130">
+        <a href="/editDestination" class="btn btn-secondary btn-sm">Edit</a>
+        <a href="/deleteDestination" class="btn btn-danger btn-delete btn-sm">Delete</a>
+      </td>
+    </tr>
+    <tr>
+      <td>Mexico Baby!</td>
+      <td>2</td>
+      <td>Mexico</td>
+      <td>Cancun</td>
+      <td>Sunset horse riding and dolphin watching</td>
+      <td width="130">
+        <a href="/editDestination" class="btn btn-secondary btn-sm">Edit</a>
+        <a href="/deleteDestination" class="btn btn-danger btn-delete btn-sm">Delete</a>
+      </td>
+    </tr>
+    <tr>
+      <td>Europe Trip!</td>
+      <td>3</td>
+      <td>Germany</td>
+      <td>Hamburg</td>
+      <td>Eat a hamburger by the river</td>
+      <td width="130">
+        <a href="/editDestination" class="btn btn-secondary btn-sm">Edit</a>
+        <a href="/deleteDestination" class="btn btn-danger btn-delete btn-sm">Delete</a>
+      </td>
+    </tr>
+    <tr>
+      <td>PNW trip</td>
+      <td>4</td>
+      <td>USA</td>
+      <td>Seattle</td>
+      <td>Pike's place, space needle and mt. rainer</td>
+      <td width="130">
+        <a href="/editDestination" class="btn btn-secondary btn-sm">Edit</a>
+        <a href="/deleteDestination" class="btn btn-danger btn-delete btn-sm">Delete</a>
+      </td>
+    </tr>
+    <tr>
+      <td>Chicago</td>
+      <td>5</td>
+      <td>USA</td>
+      <td>Chicago</td>
+      <td>THE BEAN</td>
+      <td width="130">
+        <a href="/editDestination" class="btn btn-secondary btn-sm">Edit</a>
+        <a href="/deleteDestination" class="btn btn-danger btn-delete btn-sm">Delete</a>
+      </td>
+    </tr>
+  </tbody>
+  <tfoot>
+    <tr>
+      <th>Name
+      </th>
+      <th>ID
+      </th>
+      <th>Country
+      </th>
+      <th>City
+      </th>
+      <th>Sight Seeing
+      </th>
+    </tr>
+  </tfoot>
+</table>
+<footer>
+  <%- include('../partials/footer'); %>
+</footer>
+</body>
+</html>
